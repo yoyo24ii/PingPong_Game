@@ -27,6 +27,18 @@ Copyright (c) 2025 Yousf Al Salti. All rights reserved.
 -----------------------------------------------------
 """
 
+class Object:
+
+    def __init__(self,color,filled):
+        self.color=color
+        self.filled=filled
+        pass
+
+class Circle(Object):
+    def __init__(self,color, filled, radius):
+        super().__init__(color,filled)
+        self.radius=radius
+    pass
 
 def main():
     pass
