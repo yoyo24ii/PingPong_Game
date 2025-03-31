@@ -28,6 +28,7 @@ Copyright (c) 2025 Yousf Al Salti. All rights reserved.
 """
 
 import pygame
+
 class my_Object:
     object_count=0
     def __init__(self,color,filled):
@@ -35,6 +36,12 @@ class my_Object:
         self.object_id = my_Object.object_count
         self.color=color
         self.filled=filled
+
+    def get_color(self):
+        return self.color
+
+    def get_filled(self):
+        return self.filled
 
         pass
     def describe(self):
@@ -50,11 +57,11 @@ class my_Circle(my_Object):
         self.vy = 0
         pass
     #Seting the position of the center
-    def position(self,x_pos=0,y_pos=0):
+    def set_position(self,x_pos=0,y_pos=0):
         self.x_pos=x_pos
         self.y_pos=y_pos
     #setting the velocity of the center
-    def velocity(self,vx=0,vy=0):
+    def set_velocity(self,vx=0,vy=0):
         self.vx=vx
         self.vy=vy
 
@@ -72,10 +79,6 @@ class my_Circle(my_Object):
     #getter functions for attributes
     def get_radius(self):
         return self.radius
-    def get_color(self):
-        return self.color
-    def get_filled(self):
-        return self.filled
 
 
     def describe(self):
@@ -83,49 +86,61 @@ class my_Circle(my_Object):
     pass
 
 
+class my_Rectangle(my_Object):
+    def __init__(self,color,filled,length,width):
+        super().__init__(color,filled)
+        self.length=length
+        self.width=width
+        self.x_pos = 0
+        self.y_pos = 0
+        self.vx = 0
+        self.vy = 0
+    #setters
+    def set_xpos(self,x_pos=0):
+        self.x_pos=x_pos
+
+    def set_ypos(self,y_pos=0):
+        self.y_pos=y_pos
+
+    def set_vx(self,vx=0):
+        self.vx=vx
+
+    def set_vy(self,vy=0):
+        self.vy=vy
+
+    def set_width(self,width):
+        self.width=width
+
+    def set_length(self,length):
+        self.length=length
+
+    #getters
+    def get_xpos(self):
+        return self.x_pos
+
+    def get_ypos(self):
+        return self.y_pos
+
+    def get_vx(self):
+        return self.vx
+
+    def get_vy(self):
+        return self.vy
+
+    def get_width(self):
+        return self.width
+
+    def get_length(self):
+        return self.length
+    #move methods
+    def move_x(self,dx):
+        self.x_pos+=dx
+    def move_y(self,dy):
+        self.y_pos+=dy
 
 
 def main():
-    # Initialize Pygame
-    pygame.init()
-
-    # Set up display
-    WIDTH, HEIGHT = 500, 200
-    screen = pygame.display.set_mode((WIDTH, HEIGHT))
-    clock = pygame.time.Clock()
-
-    #circle definition
-    circle = my_Circle("red",True,25)
-    circle.position(100,150)
-    circle.velocity(10,10)
-    running = True
-    color=circle.get_color()
-    x,y=circle.get_position()
-    radius=circle.get_radius()
-    while running:
-        screen.fill((0, 0, 0))  # Clear screen with black
-        pygame.draw.circle(screen, color, (x, y), radius)  # Draw circle
-        pygame.display.flip()  # Update display
-
-        # Move the circle
-        circle.move(1)
-        x,y=circle.get_position()
-        vx,vy=circle.get_velocity()
-        if x > WIDTH - radius or x < radius:
-            vx=-vx
-            circle.velocity(vx,vy)
-        if y > HEIGHT - radius or y < radius:
-            vy=-vy
-            circle.velocity(vx,vy)
-
-        # Handle events
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                running = False
-
-        clock.tick(30)  # Limit FPS
-
-    pygame.quit()
+    print("Hello World!")
 
 
     pass
