@@ -33,6 +33,8 @@ from pingpong_classes import *
 def main():
     pygame.init()
 
+    pygame.display.set_caption("My PingPong")
+
     # Screen setup
     WIDTH, HEIGHT = 800, 500
     screen = pygame.display.set_mode((WIDTH, HEIGHT))
